@@ -39,9 +39,16 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
+#
+# Input
+#
+
+
 # Ask the user for product identifier
 
 product_ids = []
+
+total_price = 0
 
 while True:
     product_id = input("Please input a product identifier (1-20 are valid) or 'Done': ")
@@ -50,10 +57,18 @@ while True:
     else:
         matching_products = [item for item in products if str(item["id"]) == str(product_id)]
         matching_product = matching_products[0]
-        #print("Selected Product: " + matching_product["name"] + str(matching_product["price"]))
+        total_price = total_price + matching_product["price"]
+        print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
         product_ids.append(product_id)
 
-print("Shopping Cart Item Identifiers Include: " + str(product_ids))
+#print("Shopping Cart Item Identifiers Include: " + str(product_ids))
+
+#
+# Output
+#
+
+print("Total Price: " + str(total_price))
+
 
 #print("Shopping Cart Item Identifiers Include ", matching_products["id"])
 
