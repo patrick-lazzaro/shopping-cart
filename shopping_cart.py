@@ -55,22 +55,23 @@ while True:
     if product_id == "DONE":
         break
     else:
-        matching_products = [item for item in products if str(item["id"]) == str(product_id)]
-        matching_product = matching_products[0]
-        total_price = total_price + matching_product["price"]
-        print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
         product_ids.append(product_id)
 
+#print(product_ids)
 #print("Shopping Cart Item Identifiers Include: " + str(product_ids))
 
 #
 # Output
 #
 
+for product_id in product_ids:
+    matching_products = [item for item in products if str(item["id"]) == str(product_id)]
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product["price"]
+    print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
+
 print("Total Price: " + str(total_price))
 
-
-#print("Shopping Cart Item Identifiers Include ", matching_products["id"])
 
 # Validate user input
 #for item in products:
