@@ -43,16 +43,24 @@ def to_usd(my_price):
 # Input
 #
 
+import datetime
+product_ids = []
+total_price = 0
 
 # Ask the user for product identifier
 
-product_ids = []
-
-total_price = 0
-
 while True:
     product_id = input("Please input a product identifier (1-20 are valid) or 'Done': ")
-    if product_id == "DONE":
+
+    # Validate user input    
+
+    options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "Done"]
+    if product_id not in options:
+        print("Hey, are you sure that product identifier is correct? Please try again!")
+
+    # Break or add product id to list
+
+    if product_id == "Done":
         break
     else:
         product_ids.append(product_id)
@@ -64,17 +72,30 @@ while True:
 # Output
 #
 
+print("-------------------")
+print("TRADER JOE'S")
+print("WWW.TRADERJOES.COM")
+print("-------------------")
+now = datetime.datetime.now()
+print("CHECKOUT AT: " + str(now.strftime("%Y-%m-%d %H:%M")))
+print("-------------------")
+
 for product_id in product_ids:
     matching_products = [item for item in products if str(item["id"]) == str(product_id)]
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
     print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
 
-print("Total Price: " + str(total_price))
+print("-------------------")
 
+print("SUBTOTAL: " + str(total_price))
 
-# Validate user input
-#for item in products:
-#    if product_id != item["id"]:
-#        print("Hey, are you sure that product identifier is correct? Please try again!")
+tax = total_price * .0875
+print("TAX: " + str(tax))
 
+total = total_price + tax
+print("TOTAL: " + str(total))
+
+print("-------------------")
+print("THANKS, SEE YOU AGAIN SOON!")
+print("-------------------")
