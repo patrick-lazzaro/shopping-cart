@@ -91,10 +91,10 @@ print("-------------------")
 print("SUBTOTAL: " + str(total_price))
 
 tax = total_price * .0875
-print("TAX: " + str(tax))
+print(f"TAX: " + str(to_usd(tax)))
 
 total = total_price + tax
-print("TOTAL: " + str(total))
+print(f"TOTAL: " + str(to_usd(total)))
 
 print("-------------------")
 print("THANKS, SEE YOU AGAIN SOON!")
