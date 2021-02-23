@@ -90,7 +90,7 @@ print("-------------------")
 # Date and Time 
 
 now = datetime.datetime.now()
-print("CHECKOUT AT: " + str(now.strftime("%Y-%m-%d %H:%M")))
+print("CHECKOUT AT: " + str(now.strftime("%Y-%m-%d %I:%M %p")))
 
 print("-------------------")
 
