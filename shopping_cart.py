@@ -1,5 +1,7 @@
 # shopping_cart.py
 
+# Collaborated with Suha Surapaneni on project
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -36,65 +38,88 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" #> $12,000.71
 
+# 
+# Customize Tax Rate
+#
 
-# TODO: write some Python code here to produce the desired output
+import os 
+import dotenv
+
+dotenv.load_dotenv()
+TAX_RATE = os.getenv("TAX_RATE", default="0.0875") 
 
 #
 # Input
 #
 
-import datetime
 product_ids = []
-total_price = 0
+options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "Done"]
 
 # Ask the user for product identifier
 
 while True:
     product_id = input("Please input a product identifier (1-20 are valid) or 'Done': ")
 
-    # Validate user input    
-
-    options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "Done"]
-    if product_id not in options:
-        print("Hey, are you sure that product identifier is correct? Please try again!")
-
     # Break or add product id to list
 
     if product_id == "Done":
         break
+
+    # Validate user input    
+
+    elif product_id not in options:
+        print("Hey, are you sure that product identifier is correct? Please try again!")
+
+    # Append list 
+
     else:
         product_ids.append(product_id)
-
-#print(product_ids)
-#print("Shopping Cart Item Identifiers Include: " + str(product_ids))
 
 #
 # Output
 #
 
+import datetime
+total_price = 0
+
 print("-------------------")
-print("TRADER JOE'S")
-print("WWW.TRADERJOES.COM")
+print("PATRICK'S GROCERY")
+print("WWW.PATRICKSGROCERY.COM")
 print("-------------------")
+
+# Date and Time 
+
 now = datetime.datetime.now()
 print("CHECKOUT AT: " + str(now.strftime("%Y-%m-%d %H:%M")))
+
 print("-------------------")
+
+# Print Selected Products
 
 for product_id in product_ids:
     matching_products = [item for item in products if str(item["id"]) == str(product_id)]
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
-    print("Selected Product: " + matching_product["name"] + " " + str(matching_product["price"]))
+    print(f"Selected Product: " + matching_product["name"] + " (" + str(to_usd(matching_product["price"])) + ")")
 
 print("-------------------")
 
-print("SUBTOTAL: " + str(total_price))
+# Print Subtotal
 
-tax = total_price * .0875
-print(f"TAX: " + str(to_usd(tax)))
+print(f"SUBTOTAL: " + str(to_usd(total_price)))
+
+# Print Tax
+
+tax_rate = (f'{TAX_RATE}')
+tax = total_price * float(tax_rate)
+print(f"TAX: " + str(to_usd(tax))) 
+
+# Print Total 
 
 total = total_price + tax
 print(f"TOTAL: " + str(to_usd(total)))
+
+# Exit Message
 
 print("-------------------")
 print("THANKS, SEE YOU AGAIN SOON!")
