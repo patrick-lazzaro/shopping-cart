@@ -53,16 +53,16 @@ TAX_RATE = os.getenv("TAX_RATE", default="0.0875")
 #
 
 product_ids = []
-options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "Done"]
+options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "DONE"]
 
 # Ask the user for product identifier
 
 while True:
-    product_id = input("Please input a product identifier (1-20 are valid) or 'Done': ")
+    product_id = input("Please input a product identifier (1-20 are valid) or 'DONE': ")
 
     # Break or add product id to list
 
-    if product_id == "Done":
+    if product_id == "DONE":
         break
 
     # Validate user input    

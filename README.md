@@ -47,6 +47,6 @@ Run the game script:
 python shopping_cart.py
 ```
 
-Enter the product identifiers, then type 'Done' when finished.
+Enter the product identifiers, then type 'DONE' when finished.
 
 Enjoy your receipt!
